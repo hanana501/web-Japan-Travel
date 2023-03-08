@@ -1,0 +1,243 @@
+$themecolor: rgba(152, 57, 255, 0.5);
+
+@font-face {
+  font-family: "清松手寫體";
+  src: url(../清松手寫體1.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "清松手寫體", "Microsoft JhengHei";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+body {
+  position: relative;
+
+  img.fixed-image {
+    // 最小高度要是100vh，這樣就可以占滿整個頁面
+    min-height: 100vh;
+    position: fixed;
+    width: 100%;
+    z-index: -5;
+    bottom: 0;
+    left: 0;
+  }
+
+  header {
+    background-color: antiquewhite;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1rem;
+
+    // 設定網頁標頭固定在上方
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    // //下方添加陰影
+    box-shadow: 0 10px 6px -6px rgb(119, 101, 78);
+
+    section.logo {
+      flex: 2 1 300px;
+      display: flex;
+      align-items: center;
+      img {
+        width: 6vw;
+        height: 6vh;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    nav {
+      flex: 5 1 500px;
+      ul {
+        display: flex;
+        list-style-type: none;
+        justify-content: space-around;
+      }
+      li {
+        a {
+          color: black;
+          text-decoration: none;
+          font-size: 1.35rem;
+          transition: all 0.3s ease;
+          padding-bottom: 0.3rem;
+          &:hover {
+            color: $themecolor;
+            border-bottom: 2px solid $themecolor;
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    section.background-img {
+      // 設定背景圖片
+      min-height: 70vh;
+      background-image: url(../images/日本櫻花.jpg);
+      background-position: center;
+      background-size: cover;
+      transition: all 3s ease;
+      position: relative;
+      z-index: 0;
+      // 設定h3文字置中方法
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      div.filter {
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        // 遮罩高度要與背景圖片一樣
+        min-height: 70vh;
+        //   相對於父元素來說位置是固定的
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      h3 {
+        color: aliceblue;
+        font-size: 3rem;
+        text-align: center;
+      }
+    }
+
+    section.info_circles {
+      background-color: antiquewhite;
+      padding: 2rem 1rem;
+
+      h3 {
+        text-align: center;
+        font-size: 2.5rem;
+      }
+      div.circles {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        div.circle {
+          padding: 1rem;
+          flex: 0 1 250px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          img {
+            width: 80%;
+            //   設定圖片為圓形
+            border-radius: 50%;
+            transition: all 0.1s ease-in;
+            padding: 0.3rem;
+
+            &:hover {
+              border: 3px solid $themecolor;
+            }
+          }
+          p {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+
+    section.empty-container {
+      min-height: 70vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h3 {
+        font-size: 2.5rem;
+        color: rgb(255, 255, 255);
+      }
+    }
+
+    section.google-map {
+      background-color: antiquewhite;
+      padding: 2rem 1rem;
+      text-align: center;
+
+      h3 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+        margin: 1rem;
+      }
+
+      iframe {
+        width: 100%;
+        height: 40vh;
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    color: white;
+
+    section.logo {
+      img {
+        width: 20vw;
+      }
+      h3 {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+
+    section.links {
+      margin: 2rem;
+      a {
+        img {
+          width: 5vh;
+          margin: 0rem 1rem;
+        }
+      }
+    }
+  }
+}
+
+// 設定nav的RWD
+@media screen and (max-width: 520px) {
+  body {
+    header {
+      nav {
+        ul {
+          flex-direction: column;
+          li {
+            padding: 0.5rem 0.25rem;
+          }
+        }
+      }
+      section.logo {
+        flex-direction: column;
+        img {
+          width: 50vw;
+          height: 50vw;
+        }
+      }
+    }
+  }
+}
